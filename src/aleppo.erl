@@ -347,10 +347,10 @@ stringify_tokens(TokenList) ->
 stringify_tokens1([], Acc) ->
     lists:concat(lists:reverse(Acc));
 stringify_tokens1([Token|Rest], []) ->
-    {symbol, Symbol} = erl_scan:token_info(Token, symbol),
+    {symbol, Symbol} = erl_scan:symbol(Token),
     stringify_tokens1(Rest, [Symbol]);
 stringify_tokens1([Token|Rest], Acc) ->
-    {symbol, Symbol} = erl_scan:token_info(Token, symbol),
+    {symbol, Symbol} = erl_scan:symbol(Token),
     stringify_tokens1(Rest, [Symbol, " "|Acc]).
 
 insert_comma_tokens(Args, Loc) ->
